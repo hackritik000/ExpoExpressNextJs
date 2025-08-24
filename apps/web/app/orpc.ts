@@ -1,14 +1,16 @@
-import { createTRPCClient, httpBatchLink } from "@trpc/client";
-import type { AppRouter } from "../../backend/src/index.ts";
+import { trpc } from "utils/trpc";
 
-const trpc = createTRPCClient<AppRouter>({
-  links: [
-    httpBatchLink({
-      url: "http://localhost:4000/trpc",
-    }),
-  ],
-});
-
-const user = trpc.getUser.query("hi");
-
-console.log(user);
+trpc.authRouter.checkUserPassword
+  .query({
+    email: "hackritik000@gmail.com",
+    password: "12345678",
+  })
+  .then((user) => {
+    console.log(user);
+  })
+  .catch((error) => {
+    console.error("something worng", error);
+  })
+  .finally(() => {
+    console.log("atleast finally work");
+  });

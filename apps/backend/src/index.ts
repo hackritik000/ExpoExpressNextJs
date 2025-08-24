@@ -1,5 +1,7 @@
 import * as trpcExpress from "@trpc/server/adapters/express";
 import express from "express";
+import { appRouter } from "./route";
+import { createContext } from "./utils/trpc";
 
 const app = express();
 app.use(
