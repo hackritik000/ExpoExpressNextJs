@@ -3,7 +3,8 @@
   "module": "index.ts",
   "type": "module",
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "trpc-ui": "^1.0.15"
   },
   "scripts": {
     "dev": "bun src/index --watch"

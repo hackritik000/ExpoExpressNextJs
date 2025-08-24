@@ -9,6 +9,6 @@ const trpc = createTRPCClient<AppRouter>({
   ],
 });
 
-const user = await trpc.getUser.query("hi");
+const user = trpc.getUser.query("hi");
 
 console.log(user);
