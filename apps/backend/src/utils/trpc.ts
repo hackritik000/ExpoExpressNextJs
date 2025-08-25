@@ -9,7 +9,7 @@ export const createContext = () => ({
 
 type Context = Awaited<ReturnType<typeof createContext>>;
 
-const t = initTRPC.context<Context>().create();
+export const t = initTRPC.context<Context>().create();
 
 export const router = t.router;
 
@@ -17,6 +17,7 @@ export const publicProcedure = t.procedure;
 
 export const adminProcedure = publicProcedure.use(async (opts) => {
   const { ctx } = opts;
+
   if (!ctx.user?.isAdmin) {
     throw new TRPCError({ code: "UNAUTHORIZED" });
   }

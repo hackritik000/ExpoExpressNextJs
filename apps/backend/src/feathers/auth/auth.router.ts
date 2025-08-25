@@ -5,7 +5,7 @@ import { checkUserPassword, generateToken } from "./auth.service";
 
 export const authRouter = router({
   checkUserPassword: publicProcedure
-    .input(z.object({ email: z.email(), password: z.string() }))
+    .input(z.object({ email: z.string(), password: z.string() }))
     .query(async ({ input }) => {
       const isCredentialCorrect = checkUserPassword(
         input.email,
